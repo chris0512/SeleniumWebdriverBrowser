@@ -3,10 +3,32 @@ from selenium import webdriver
 chrome_driver_path = "C:\\Development\\chromedriver_win32\\chromedriver.exe"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
-driver.get("https://www.amazon.com/430-G3-i3-6100U-%E9%9B%99%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8-Windows/dp/B08P4NXTSG/ref=sr_1_1_sspa?dchild=1&keywords=mac+book&qid=1624257252&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExWUpVUjZBSDhEQjlPJmVuY3J5cHRlZElkPUEwNzUyOTgxMU1CSkZKVExQQjBOTSZlbmNyeXB0ZWRBZElkPUEwNzA0NzkxMzNLRjhTSlJXUEoxNyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=")
-price = driver.find_element_by_id("priceblock_saleprice")
-print(price.text)
+driver.get("https://www.python.org/")
+# price = driver.find_element_by_id("priceblock_saleprice")
+# search_bar = driver.find_element_by_name("q")
+# print(search_bar.get_attribute("placeholder"))
 
+# logo = driver.find_element_by_class_name("python-logo")
+# print(logo.size)
+
+# documentation_link = driver.find_element_by_css_selector(".documentation-widget a")
+# print(documentation_link.text)
+
+# bug_link = driver.find_element_by_xpath('//*[@id="site-map"]/div[2]/div/ul/li[3]/a')
+# print(bug_link.text)
+
+
+event_times = driver.find_elements_by_css_selector(".event-widget time")
+event_names = driver.find_elements_by_css_selector(".event-widget li a")
+events = {}
+
+for n in range(0, len(event_times)):
+    events[n] = {
+        "time": event_times[n].text,
+        "name": event_names[n].text,
+    }
+
+print(events)
 
 # driver.close()
-# driver.quit()
+driver.quit()
